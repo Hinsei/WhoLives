@@ -12,7 +12,8 @@ class User < ApplicationRecord
 
 
 	def self.create_with_auth_and_hash(authentication, omniauth_hash)
-		user = User.create!(username: omniauth_hash["name"], email: omniauth_hash["extra"]["raw_info"]["email"])
+		password = SecureRandom.urlsafe_base64
+		user = User.create!(username: omniauth_hash["extra"]["raw_info"]["name"] , email: omniauth_hash["extra"]["raw_info"]["email"], password: password, password_confirmation: password)
 		user.authentications << (authentication)
 		return user
 	end

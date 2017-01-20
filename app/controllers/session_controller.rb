@@ -15,11 +15,11 @@ class SessionController < ApplicationController
 
 	def create_from_omniauth
 		omniauth_hash = request.env["omniauth.auth"]
-		authentication = Authenticate.find_by_provider_and_uid(omniauth_hash["provider"], omniauth["uid"]) || Authenticate.create_with_omniauth(omniauth_hash)
+		authentication = Authentication.find_by_provider_and_uid(omniauth_hash["provider"], omniauth_hash["uid"]) || Authentication.create_with_omniauth(omniauth_hash)
 
 		if authentication.user
 			user = authentication.user
-			authenticaiton.update_token(omniauth_hash)
+			authentication.update_token(omniauth_hash)
 		else
 			user = User.create_with_auth_and_hash(authentication, omniauth_hash)
 		end
