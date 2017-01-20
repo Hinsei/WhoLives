@@ -1,0 +1,91 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+			<h1>
+				Your Records
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h2 class="text-center">
+				Username
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h4 class="text-center">
+				<%= @user.username %>
+			</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h2 class="text-center">
+				Email
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h4 class="text-center">
+				<%= @user.email %>
+			</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h2 class="text-center">
+				Wins
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h4 class="text-center">
+				<%= @user.wins %>
+			</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h2 class="text-center">
+				Loses
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h4 class="text-center">
+			 <%= @user.losses %>
+			</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h2 class="text-center">
+				Total Games
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<h4 class="text-center">
+				<%= @user.total_game %>
+			</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<%= link_to "Edit Profile", edit_user_path, class: "btn btn-danger" %>
+		</div>
+	</div>
+	<% if authorized? %>
+	<div class="row">
+		<div class="col-md-8 col-offset-2 col-xs-8 col-xs-offset-2">
+			<%= link_to "Destory Profile", users_path, method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger" %>
+		</div>
+	</div>
+	<% end %>
+</div>
