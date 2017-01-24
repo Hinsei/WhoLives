@@ -15,6 +15,7 @@ class MatchesController < ApplicationController
 	def show
 		@match = Match.find(params[:id])
 		@word = @match.word
+		gon.puzzle = make_slots(@word)
 		@puzzle = make_slots(@word).join(" ")
 	end
 
