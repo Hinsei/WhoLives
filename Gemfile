@@ -35,6 +35,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'unirest'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

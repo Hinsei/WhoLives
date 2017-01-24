@@ -32,7 +32,14 @@
 	</div>
 	<div class="row">
 		<div class="col-md-8 col-xs-offset-2 col-xs-8 col-xs-offset-2 text-center">
-		<%= link_to "Log In With Facebook", "/auth/facebook", class: "btn btn-primary" %>
+			<%= link_to "Log In With Facebook", "/auth/facebook", class: "btn btn-primary" %>
 		</div>
 	</div>
+	<% if login? %>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center">
+				<%= link_to "Start A New Trial", new_game_path, class: "btn btn-primary" %>
+			</div>
+		</div>
+	<% end %>
 </div>
