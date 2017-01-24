@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [:new]
 
-  resources :matches, only: [:new]
+  resources :matches, only: [:create, :show]
 
   get "users/new" => "users#new", as: "sign_up"
   get "session/new" => "session#new", as: "log_in"

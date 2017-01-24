@@ -1,10 +1,6 @@
 <%= form_for @match do |f| %>
 	<div class="form-group">
-		<%= f.text_field :choice %>
+		<%= f.text_field :category %>
 		<%= f.submit "Select" %>
 	</div>
-<% end %>
-<% if @word.present? %>
-	<p>Word chosen by given category press the button below to start</p>
-	<%= link_to "Game lobby", new_match_path(word: @word, category: @category), class: "btn btn-primary" %>
 <% end %>
