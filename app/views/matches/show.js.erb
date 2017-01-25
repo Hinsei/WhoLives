@@ -1,16 +1,19 @@
-console.log("<%= j @alphabets %>")
-
-gon.watch('alphabets', function(event){
-	$('#alphabets').text(event)
-})
-
-$("#test").append(gon.word)
+counter = 0
 
 $.each(gon.word, function(index, value){
 	if (gon.word[index] === "<%= j @alphabets %>" ) {
-		$("#container" + index).html("<%= j @alphabets %>")
+		counter = counter - 1
 	} else {
-		$('#test').append("<p>Wrong</p>")
+		counter = counter + 1
 	}
 })
 
+if (counter === gon.word.length ) {
+	$("#guess-container").append("<input type='hidden' value='1' name='minus'></input>")
+} else {
+	$.each(gon.word, function(index, value) {
+		if (gon.word[index] === "<%= j @alphabets %>") {
+			$("#container" + index).html("<%= j @alphabets %>")
+		}
+	})
+}

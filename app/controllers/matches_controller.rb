@@ -19,7 +19,8 @@ class MatchesController < ApplicationController
 		gon.puzzle = make_slots(@word)
 		@puzzle = make_slots(@word).join(" ")
 		@alphabets = params["Alphabets"] unless params["Alphabets"].nil?
-		gon.watch.alphabets = @alphabets unless @alphabets.nil?
+		@lives = 5
+		byebug
 		respond_to do |format|
 			format.js
 			format.html
@@ -35,5 +36,11 @@ class MatchesController < ApplicationController
 			array << x
 		end
 		return array
+	end
+
+	def guess(word, alphabet)
+		letter = [alphabet]
+		number = word - letter
+		number.length
 	end
 end
