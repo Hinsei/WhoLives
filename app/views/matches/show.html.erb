@@ -1,13 +1,21 @@
+<%= include_gon %>
 <h1>Fight</h1>
 
 <p><%= @match.category %></p>
 
 <%= @puzzle %>
-
-<%= select_tag "Alphabets", options_for_select(("A".. "Z").to_a) %>
+<%= form_tag("/matches/#{@match.id}", method: :get, remote: true, id: "guess-container") do %>
+	<%= select_tag "Alphabets", options_for_select(("A".. "Z").to_a) %>
+	<%= submit_tag "Guess" %>
+<% end %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" id="puzzle-container">
 		</div>
 	</div>
 </div>
+
+<div id="test">
+</div>
+
+<div id = 'alphabets'><%=@alphabets%></div>

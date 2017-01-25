@@ -14,9 +14,16 @@ class MatchesController < ApplicationController
 
 	def show
 		@match = Match.find(params[:id])
-		@word = @match.word
+		@word = @match.word.upcase.chars
+		gon.word = @match.word.upcase.chars
 		gon.puzzle = make_slots(@word)
 		@puzzle = make_slots(@word).join(" ")
+		@alphabets = params["Alphabets"] unless params["Alphabets"].nil?
+		gon.watch.alphabets = @alphabets unless @alphabets.nil?
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 
 	private

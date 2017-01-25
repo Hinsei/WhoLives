@@ -1,0 +1,16 @@
+console.log("<%= j @alphabets %>")
+
+gon.watch('alphabets', function(event){
+	$('#alphabets').text(event)
+})
+
+$("#test").append(gon.word)
+
+$.each(gon.word, function(index, value){
+	if (gon.word[index] === "<%= j @alphabets %>" ) {
+		$("#container" + index).html("<%= j @alphabets %>")
+	} else {
+		$('#test').append("<p>Wrong</p>")
+	}
+})
+
