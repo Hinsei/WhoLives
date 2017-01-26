@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+		<h1 class="text-center">
+			Currently Available Games
+		</h1>
+	</div>
+</div>
+<div id="available-matches-container">
+	<div class="row">
+		<% if @matches.count == 0 %>
+			<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+					<h3 class="text-center"> No Ongoing Matches!</h3>
+					<h3 class="text-center"> Create One Now</h3>
+			</div>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center">
+					<%= link_to "Start A New Game", new_game_path, class: "btn btn-primary" %>
+				</div>
+			</div>
+		<% else %>
+				<ol class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+					<% @matches.each do |match| %>
+						<% if match.find_creator(match.player_1) != current_user %>
+							<li class="text-center"><%= link_to "Unoccupied Match", match_path(match), class: "btn btn-primary" %> </li>
+						<% else %>
+								<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+									<h3 class="text-center"> No Ongoing Matches By Others!</h3>
+								</div>
+						<% end %>
+					<% end %>
+				</ol>
+		<% end %>
+	</div>
+</div>

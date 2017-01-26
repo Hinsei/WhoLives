@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   post "session/new" => "session#create", as: "logging_in"
   delete "session/destroy" => "session#destroy", as: "log_out"
 
+  post "/matches/:id/finished" => "matches#finished"
+
 end

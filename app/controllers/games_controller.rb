@@ -11,7 +11,7 @@ class GamesController < ApplicationController
 	private
 
 	def display
-		@matches = Matches.not_full
+		@matches = Match.not_full
 	end
 
 end

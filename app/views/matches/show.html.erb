@@ -6,18 +6,29 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" id="hangman-container">
-			<%= @lives %>
+			<div id="player1-lives">
+				<% if @p1lives <= 0 %>
+					<h2>You Are Dead</h2>
+				<% else %>
+					<h2><%= @p1lives %> lives left.</h2>
+				<% end %>
+			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2" id="puzzle-container">
+		<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2" id ="puzzle-container">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2" id="form-container">
+				<%= form_tag("/matches/#{@match.id}", method: :get, remote: true, id: "guess-container") do %>
+				<%= select_tag "Alphabets", options_for_select(("A".. "Z").to_a) %>
+				<%= submit_tag "Guess" %>
+				<% end %>
 		</div>
 	</div>
 </div>
-<%= form_tag("/matches/#{@match.id}", method: :get, remote: true, id: "guess-container") do %>
-	<%= select_tag "Alphabets", options_for_select(("A".. "Z").to_a) %>
-	<%= submit_tag "Guess" %>
-<% end %>
-
 <div id="test">
 </div>
+<input type="hidden" data-id="<%= current_user.id%>" >

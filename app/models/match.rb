@@ -5,4 +5,8 @@ class Match < ApplicationRecord
 
 	# Status
 	enum status: { ongoing: 0, finished: 1 }
+
+	def find_creator(id)
+		User.find(id)
+	end
 end
