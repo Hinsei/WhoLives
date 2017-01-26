@@ -9,8 +9,8 @@ class MatchesController < ApplicationController
 		if response == nil
 			flash[:notice] = "Type in another category"
 		end
-		@word = response.body["results"].sample["word"]
-		@match = Match.new(category: @category, word: @word, player_1: User.find(session[:user_id]))
+		@word = response.body["results"].sample["word"].gsub(/\s+/, "")
+		@match = Match.new(category: @category, word: @word, player_1: session[:user_id])
 		if @match.save
 			redirect_to @match
 		else
@@ -52,11 +52,13 @@ class MatchesController < ApplicationController
 			if @player_1 == User.find(session[:user_id])
 				@player_1.update(losses: @player_1.losses + 1)
 				@match.update(status: 1)
+				redirect_to @player_1
 			end
 		elsif params[:result] == "solved"
 			if @player_1 == User.find(session[:user_id])
 				@player_1.update(wins: @player_1.losses + 1)
 				@match.update(status: 1)
+				redirect_to @player_1
 			end
 		end
 	end
