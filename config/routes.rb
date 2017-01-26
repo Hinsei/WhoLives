@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :games, only: [:new]
+  resources :games, only: [:new, :index]
 
   resources :matches, only: [:create, :show]
 
