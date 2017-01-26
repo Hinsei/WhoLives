@@ -1,6 +1,17 @@
-<%= form_for @match do |f| %>
-	<div class="form-group">
-		<%= f.text_field :category %>
-		<%= f.submit "Select" %>
+<div class="row">
+	<div class="col-md-8 col-xs-offset-2 col-xs-8 col-xs-offset-2">
+		<h1 class="text-center">
+		Type In Desired Category
+		</h1>
 	</div>
-<% end %>
+</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center">
+		<%= form_for @match do |f| %>
+			<div class="form-group">
+				<%= f.text_field :category %>
+				<%= f.submit "Select" %>
+			</div>
+		<% end %>
+	</div>
+</div>

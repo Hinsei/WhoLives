@@ -34,7 +34,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'figaro'
 gem 'unirest'
 gem 'gon'
 
@@ -48,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'figaro'
 end
 
 group :development do
