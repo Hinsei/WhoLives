@@ -2,6 +2,8 @@ class User < ApplicationRecord
 	# user verification
 	has_secure_password
 
+	enum role: {user: 0, admin: 1, king: 2}
+
 	# associations
 	has_many :authentications, dependent: :destroy
 	# validations
@@ -21,10 +23,6 @@ class User < ApplicationRecord
 	def fb_token
 			x = self.authentications.where(provider: :facebook).first
 			return x.token unless x.nil?
-	end
-
-	def password_optional
-		true
 	end
 
 	private

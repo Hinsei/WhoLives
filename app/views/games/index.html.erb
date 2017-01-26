@@ -1,3 +1,4 @@
+<% if login? %>
 <div class="row">
 	<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
 		<h1 class="text-center">
@@ -32,3 +33,10 @@
 		<% end %>
 	</div>
 </div>
+<% else %>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-2">
+			Please Login
+		</div>
+	</div>
+<% end %>

@@ -34,7 +34,9 @@ class MatchesController < ApplicationController
 		@word = @match.word.upcase.chars
 		gon.word = @match.word.upcase.chars
 		gon.puzzle = make_slots(@word)
+		# delete btm
 		@puzzle = make_slots(@word).join(" ")
+		#delete top
 		@alphabets = params["Alphabets"] unless params["Alphabets"].nil?
 		if @word.index(@alphabets) == nil && @alphabets != nil
 			@match.update(p1lives: (@match.p1lives - 1) )
@@ -46,7 +48,6 @@ class MatchesController < ApplicationController
 	end
 
 	def finished
-		byebug
 		if params[:result] == "dead"
 			if @player_1 == User.find(session[:user_id])
 				@player_1.update(losses: @player_1.losses + 1)
