@@ -12,7 +12,7 @@ module UsersHelper
 
 
 	def authorized?
-		if current_user.role == 0
+		if current_user.role == "user"
 			false
 		else
 			true
