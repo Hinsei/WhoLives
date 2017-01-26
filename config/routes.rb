@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :games, only: [:new]
+  resources :games, only: [:new, :index]
 
   resources :matches, only: [:create, :show]
 
@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   post "session/new" => "session#create", as: "logging_in"
   delete "session/destroy" => "session#destroy", as: "log_out"
+
+  post "/matches/:id/finished" => "matches#finished"
 
 end

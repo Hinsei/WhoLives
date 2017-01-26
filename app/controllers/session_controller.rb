@@ -6,7 +6,7 @@ class SessionController < ApplicationController
 		user = User.authenticate(params[:session][:email], params[:session][:password])
 		if user && User.find_by_email(params[:session][:email])
 			session[:user_id] = user.id
-			redirect_to user_path(user)
+			redirect_to games_path
 		else
 			flash[:error] = "Login Failed"
 			render "new"
@@ -24,7 +24,7 @@ class SessionController < ApplicationController
 			user = User.create_with_auth_and_hash(authentication, omniauth_hash)
 		end
 		session[:user_id] = user.id
-		redirect_to user_path(user)
+		redirect_to games_path
 	end
 
 	def destroy

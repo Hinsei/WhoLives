@@ -1,10 +1,17 @@
 class GamesController < ApplicationController
+	before_action :display, only: [:index]
+
+	def index
+	end
 
 	def new
 			@match = Match.new
 	end
 
-	def create
-		redirect_to new_game_path
+	private
+
+	def display
+		@matches = Match.not_full
 	end
+
 end
